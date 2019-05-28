@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AttendanceStar</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/UTCtimeConvert.js"></script>
+
+    <link rel="icon" href="~/Content/img/avatar8.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+
+@{
+    var background = "IncludeBackgroundImageDay";
+    var backgroundColor = "IncludeBackgroundColorDay";
+
+    var routeController = Url.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+<body class="@backgroundColor" id="BodyBackgroundColorId">
+    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        @Html.ActionLink("AttendanceStar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", id = "AvatarAttendanceLinkNavBar" })
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="navbar-nav mr-auto FontBold FontColorBlack FontSizeSmall">
+                <li class="nav-item">
+                    @Html.ActionLink("Student", "Roster", "Portal", null, new { @class = "nav-link", id = "HomeLinkNavBar" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Kiosk Mode", "Index", "Kiosk", null, new { @class = "nav-link", id = "KioskModeLinkNavBar" })
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="@background" id="BodyBackgroundImageId">
+        <div class="container-fluid body-content fill-height">
+            @RenderBody()
+
+            @{
+                // Adding padding at the bottom of the page, needed to make sure buttons can be reached when in phone mode
+                <div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+            }
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @{
+        // Adding Tags to the page for UI Automation to use
+        var myAreaID = "Area-" + ViewContext.RouteData.DataTokens["area"] + "-Done";
+        var myControllerID = "Controller-" + ViewContext.Controller.ValueProvider.GetValue("controller").RawValue + "-Done";
+        var myActionID = "View-" + ViewContext.RouteData.Values["action"] + "-Done";
+
+        <div id="Page-Done"></div>
+        <div id="@myAreaID"></div>
+        <div id="@myControllerID"></div>
+        <div id="@myActionID"></div>
+    }
+</body>
+</html>
