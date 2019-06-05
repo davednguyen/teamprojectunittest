@@ -9,12 +9,15 @@ using _5051;
 using _5051.Controllers;
 using _5051.Models;
 using _5051.Backend;
+using _5051.Tests.MailService;
 
 namespace _5051.Tests.Controllers
 {
     [TestClass]
     public class AvatarSelectControllerTest
     {
+        MailFunctions mailService = new MailFunctions();
+        
         public TestContext TestContext { get; set; }
 
         [TestInitialize]
@@ -35,10 +38,11 @@ namespace _5051.Tests.Controllers
             ViewResult result = controller.Index(id) as ViewResult;
 
             // Reset
-            DataSourceBackend.Instance.Reset();
-
+            DataSourceBackend.Instance.Reset();          
             // Assert
             Assert.IsNotNull(result, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_Default_Should_Pass", "test completed");
         }
 
         [TestMethod]
@@ -65,6 +69,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         #endregion IndexRegion
@@ -524,6 +530,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -541,6 +549,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -558,6 +568,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -576,6 +588,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -595,6 +609,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -614,6 +630,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -633,6 +651,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -652,6 +672,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -674,6 +696,8 @@ namespace _5051.Tests.Controllers
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
             Assert.AreEqual("Home", result.RouteValues["controller"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -693,6 +717,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(controller.ModelState.IsValid, false, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -712,6 +738,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Error", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -733,6 +761,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Index", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -755,6 +785,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Index", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -777,6 +809,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Index", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -799,6 +833,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Index", result.RouteValues["action"], TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -826,6 +862,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.AccessoryId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -853,6 +891,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.CheeksId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -880,6 +920,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.ExpressionId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -907,6 +949,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.HairBackId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -934,6 +978,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.HairFrontId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -961,6 +1007,8 @@ namespace _5051.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expect, myStudent2.AvatarComposite.HeadId, TestContext.TestName);
+            //send email
+            SendEmail("Controller_AvatarSelectShop_Index_With_Empty_List_Should_Return_Error_Page", "test completed");
         }
 
         [TestMethod]
@@ -1259,5 +1307,11 @@ namespace _5051.Tests.Controllers
         //}
 
         #endregion Inventory
+
+        private void SendEmail(string title, string result)
+        {
+            var emailBody = mailService.BuildHTMLBody(title, result.ToString(), 0);
+            mailService.SendEmailService(title, emailBody, "attendancestarwebtest@outlook.com");
+        }
     }
 }
