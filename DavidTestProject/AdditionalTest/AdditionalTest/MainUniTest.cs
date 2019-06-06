@@ -24,7 +24,7 @@ namespace AdditionalTest
         {
             WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(10));
             driver.Navigate().GoToUrl(homeURL);           
-            IWebElement MikeAvarta = driver.FindElement(By.Id("e219a7f5-0b9e-48fa-a1e0-8b4bc02a20d9"));
+            IWebElement MikeAvarta = driver.FindElement(By.Name("Mike"));
             int milliseconds = 3000;
             Thread.Sleep(milliseconds);
             MikeAvarta.Click();
@@ -41,7 +41,7 @@ namespace AdditionalTest
         {
             WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(10));
             driver.Navigate().GoToUrl(homeURL);
-            IWebElement MikeAvarta = driver.FindElement(By.Id("e219a7f5-0b9e-48fa-a1e0-8b4bc02a20d9"));
+            IWebElement MikeAvarta = driver.FindElement(By.Name("Mike"));
             int milliseconds = 3000;
             Thread.Sleep(milliseconds);
             MikeAvarta.Click();
@@ -49,7 +49,7 @@ namespace AdditionalTest
             IWebElement imgSource = avatarButton.FindElement(By.CssSelector("#avatarLinkPortalIndex > img"));
             string imageSrcValue = imgSource.GetAttribute("src");
             string expectedImageSrc = "http://localhost:59052/Content/img/Avatars_dark.png";
-            driver.Close();
+            //driver.Close();
             Assert.AreEqual(expectedImageSrc, imageSrcValue);         
         }
     }
