@@ -8,13 +8,13 @@ namespace _5051.Tests.MailService
     {
         private static string senderEmail = "attendancestarwebtest@outlook.com";
         private static string senderEmailPassword = "Password123456";
-        //private static string senderEmail = "david.dzung.nguyen@gmail.com";
-        //private static string senderEmailPassword = "**Mrd5813845**";
+        string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td><td style=\"border:1px solid #dddddd\">{2}</td></tr>";
 
         #region
         public string BuildHTMLBody(string testTitle, string testResult,int count)
         {
-            string table = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th><th style=\"border:1px solid #dddddd\">Row number</th></tr><tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td><td style=\"border:1px solid #dddddd\">{2}</td></tr></table>";
+            string table = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th><th style=\"border:1px solid #dddddd\">Row number</th></tr>{0}</table>";
+            
             string emailBody = string.Format(table, testTitle, testResult,count);
             return emailBody;
         }
