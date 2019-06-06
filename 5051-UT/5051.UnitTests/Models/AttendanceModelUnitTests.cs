@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using _5051.Models;
+using _5051.UnitTests.MailService;
+using System.Net.Mail;
+using System.Net;
 
 namespace _5051.UnitTests.Models
 {
@@ -12,6 +15,31 @@ namespace _5051.UnitTests.Models
     public class AttendanceModelUnitTests
     {
         public TestContext TestContext { get; set; }
+
+        SendEmailFunctions mailService = new SendEmailFunctions();
+        private static string senderEmail = "attendancestarwebtest@outlook.com";
+        private static string senderEmailPassword = "Password123456";
+        static string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:green;\">{1}</td></tr>";
+        static string redRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:red;\">{1}</td></tr>";
+        static string fullTable = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th></tr>{0}</table>";
+        static string listOfRows;
+
+        [ClassCleanup()]
+        public static void ClassCleanup()
+        {
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(senderEmail);
+            mail.To.Add(senderEmail);
+            mail.Subject = "Test result for :" + "Attendance Model Unit Tests";
+            mail.Body = string.Format(fullTable, listOfRows);
+            mail.IsBodyHtml = true;
+            SmtpClient mailClient = new SmtpClient("smtp-mail.outlook.com");
+            mailClient.Port = 587;
+            mailClient.Credentials = new NetworkCredential(senderEmail, senderEmailPassword);
+            mailClient.EnableSsl = true;
+            mailClient.Send(mail);
+        }
 
         #region Instantiate
         [TestMethod]
@@ -23,6 +51,7 @@ namespace _5051.UnitTests.Models
 
             // Assert
             Assert.IsNotNull(result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "Models_AttendanceModel_Default_Instantiate_Should_Pass", "passed");
         }
 
         [TestMethod]
@@ -36,6 +65,7 @@ namespace _5051.UnitTests.Models
 
             // Assert
             Assert.AreEqual(result, null, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "Models_AttendanceModel_Default_Instantiate_With_Null_Should_Fail", "passed");
         }
 
         [TestMethod]
@@ -53,6 +83,7 @@ namespace _5051.UnitTests.Models
 
             // Assert
             Assert.AreEqual(result.Emotion, myDataNew.Emotion, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "Models_AttendanceModel_Default_Instantiate_With_Valid_Data_Should_Pass", "passed");
         }
 
         [TestMethod]
@@ -77,7 +108,7 @@ namespace _5051.UnitTests.Models
             result.IsNew = expectedIsNew;
             result.Emotion = expectEmotion;
             result.EmotionUri = expectEmotionUri;
-
+            listOfRows = listOfRows + string.Format(greenRow, "Models_AttendanceModel_Default_Instantiate_Get_Set_Should_Pass", "passed");
             // Assert
             Assert.IsNotNull(result.Id, TestContext.TestName);
             Assert.AreEqual(expectStudentId, result.StudentId, TestContext.TestName);

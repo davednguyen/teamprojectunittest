@@ -117,8 +117,8 @@
     <Compile Include="Controllers\AvatarSelectControllerTest.cs" />
     <Compile Include="Controllers\PortalControllerTest.cs" />
     <Compile Include="Controllers\KioskControllerTest.cs" />
-    <Compile Include="MailService\MailFunctions.cs" />
-    <Compile Include="MailService\iMailFunctions.cs" />
+    <Compile Include="MailService\SendEmailFunctions.cs" />
+    <Compile Include="MailService\iSendEmailFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

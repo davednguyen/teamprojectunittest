@@ -4,7 +4,7 @@ using System.Net;
 
 namespace _5051.UnitTests.MailService
 {
-    public class MailFunctions : iMailFunctions
+    public class SendEmailFunctions : iSendEmailFunctions
     {
         private static string senderEmail = "attendancestarwebtest@outlook.com";
         private static string senderEmailPassword = "Password123456";

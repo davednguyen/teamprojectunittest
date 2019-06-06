@@ -119,9 +119,10 @@
     <Compile Include="Backend\StudentBackendUnitTests.cs" />
     <Compile Include="Backend\StudentDataSourceMockUnitTests.cs" />
     <Compile Include="Backend\KioskSettingsDataSourceMockUnitTests.cs" />
+    <Compile Include="Backend\UnitTest1.cs" />
     <Compile Include="Backend\UTCConversionsBackendUnitTests.cs" />
-    <Compile Include="MailService\iMailFunctions.cs" />
-    <Compile Include="MailService\MailFunctions.cs" />
+    <Compile Include="MailService\iSendEmailFunctions.cs" />
+    <Compile Include="MailService\SendEmailFunctions.cs" />
     <Compile Include="Misc\FilterConfigUnitTests.cs" />
     <Compile Include="Misc\RouteConfigUnitTests.cs" />
     <Compile Include="Misc\BundleConfigUnitTests.cs" />

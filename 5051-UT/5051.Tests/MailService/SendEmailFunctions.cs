@@ -4,50 +4,43 @@ using System.Net;
 
 namespace _5051.Tests.MailService
 {
-    public class MailFunctions : iMailFunctions
+    public class SendEmailFunctions : iSendEmailFunctions
     {
         private static string senderEmail = "attendancestarwebtest@outlook.com";
         private static string senderEmailPassword = "Password123456";
-        string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td><td style=\"border:1px solid #dddddd\">{2}</td></tr>";
+        static string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:green;\">{1}</td></tr>";
+        static string redRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:red;\">{1}</td></tr>";
+        static string fullTable = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th></tr>{0}</table>";
+
+        public string BuildRow(string testName, string testResult, bool result)
+        {
+            string row = string.Empty;
+            if (result)
+            {
+                row = string.Format(greenRow, testName, testResult);
+            }
+            else
+            {
+                row = string.Format(redRow, testName, testResult);
+            }
+            return row;
+        }
+
+        public string BuildTable(string rows)
+        {
+            //string tableResult = string.Empty;
+            string tableResult = string.Format(fullTable, rows);
+            return tableResult;
+        }
 
         #region
         public string BuildHTMLBody(string testTitle, string testResult,int count)
         {
-            string table = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th><th style=\"border:1px solid #dddddd\">Row number</th></tr>{0}</table>";
-            
-            string emailBody = string.Format(table, testTitle, testResult,count);
+            string table = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th></tr><tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td></tr></table>";
+            string emailBody = string.Format(table, testTitle, testResult);
             return emailBody;
         }
         #endregion
-
-        #region
-        public string BuildHTMLBodyV2(string testTitle, string testResult, int count, string sheetUrl)
-        {
-            string table = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th><th style=\"border:1px solid #dddddd\">Row number</th><th style=\"border:1px solid #dddddd\">Sheet Url</th></tr><tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td><td style=\"border:1px solid #dddddd\">{2}</td><td style=\"border:1px solid #dddddd\">{3}</td></tr></table>";
-            string emailBody = string.Format(table, testTitle, testResult, count,sheetUrl);
-            return emailBody;
-        }
-        #endregion
-
-        #region
-        public string BuildHTMLBodyV3(string testTitle, string testResult, int count, string sheetUrl, string sourceSheetUrl)
-        {
-            string table = "<body><table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th><th style=\"border:1px solid #dddddd\">Row number</th><th style=\"border:1px solid #dddddd\">Sheet Url</th><th style=\"border:1px solid #dddddd\">Source Sheet Url</th></tr><tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"border:1px solid #dddddd\">{1}</td><td style=\"border:1px solid #dddddd\">{2}</td><td style=\"border:1px solid #dddddd\">{3}</td><td style=\"border:1px solid #dddddd\">{4}</td></tr></table><IFRAME WIDTH=1000 HEIGHT=700 FRAMEBORDER=0 SRC=\"https://app.smartsheet.com/b/publish?EQBCT=693fcfb24f0a40f1a60d1dc18301475d\"></IFRAME></body>";
-            string emailBody = string.Format(table, testTitle, testResult, count, sheetUrl, sourceSheetUrl);
-            return emailBody;
-        }
-        #endregion
-
-        #region
-        public string GenerateCSVFileName(string fileTitle)
-        {
-            string fileLocationString = @"C:\Users\{0}\Desktop\{1}";
-            string currentUserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            string filePath = string.Format(fileLocationString, currentUserName, fileTitle);
-            return filePath;
-        }
-        #endregion
-
         #region
         /// <summary>
         /// 
@@ -132,6 +125,27 @@ namespace _5051.Tests.MailService
             }           
 
         }
+
+        public string GenerateCSVFileName(string fileTitle)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public string SendEmailService(string title, string testResult, string emailAddress)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public string BuildHTMLBodyV2(string testTitle, string testResult, int count, string sheetUrl)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string BuildHTMLBodyV3(string testTitle, string testResult, int count, string sheetUrl, string sourceSheetUrl)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

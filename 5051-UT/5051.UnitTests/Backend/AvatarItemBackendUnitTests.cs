@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using _5051.Models;
 using _5051.Backend;
+using System.Net.Mail;
+using System.Net;
+using _5051.UnitTests.MailService;
 
 namespace _5051.UnitTests.Backend
 {
@@ -8,6 +11,30 @@ namespace _5051.UnitTests.Backend
     public class AvatarItemBackendUnitTests
     {
         public TestContext TestContext { get; set; }
+        SendEmailFunctions mailService = new SendEmailFunctions();
+        private static string senderEmail = "attendancestarwebtest@outlook.com";
+        private static string senderEmailPassword = "Password123456";
+        static string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:green;\">{1}</td></tr>";
+        static string redRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:red;\">{1}</td></tr>";
+        static string fullTable = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th></tr>{0}</table>";
+        static string listOfRows;
+
+        [ClassCleanup()]
+        public static void ClassCleanup()
+        {
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(senderEmail);
+            mail.To.Add(senderEmail);
+            mail.Subject = "Test result for :" + "Home Controller Test";
+            mail.Body = string.Format(fullTable, listOfRows);
+            mail.IsBodyHtml = true;
+            SmtpClient mailClient = new SmtpClient("smtp-mail.outlook.com");
+            mailClient.Port = 587;
+            mailClient.Credentials = new NetworkCredential(senderEmail, senderEmailPassword);
+            mailClient.EnableSsl = true;
+            mailClient.Send(mail);
+        }
 
         [TestInitialize]
         public void TestInitialize()
@@ -34,6 +61,7 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.AreEqual(expect, deleteResult, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(redRow, "Backend_AvatarItemBackend_Delete_Valid_Data_Should_Pass", "failed");
         }
 
         [TestMethod]
@@ -51,6 +79,7 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.AreEqual(expect, result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(redRow, "Backend_AvatarItemBackend_Delete_Valid_Data_Should_Pass", "failed");
         }
         #endregion delete
 
@@ -138,7 +167,7 @@ namespace _5051.UnitTests.Backend
 
             //reset
             test.Reset();
-
+            listOfRows = listOfRows + string.Format(redRow, "Backend_AvatarItemBackend_Update_Valid_Data_Should_Pass", "failed");
             //assert
             Assert.IsNotNull(result, "Updated "+TestContext.TestName);
             Assert.AreEqual(expect.Name, result.Name, "Name "+TestContext.TestName);
@@ -146,6 +175,7 @@ namespace _5051.UnitTests.Backend
             Assert.AreEqual(expect.Uri, result.Uri, "URI "+TestContext.TestName);
             Assert.AreEqual(expect.Tokens, result.Tokens, "Tokens "+TestContext.TestName);
             Assert.AreEqual(expect.Category, result.Category, "Category " + TestContext.TestName);
+            
         }
 
         [TestMethod]
@@ -226,6 +256,7 @@ namespace _5051.UnitTests.Backend
             //assert
             Assert.IsNotNull(result, TestContext.TestName);
             Assert.AreEqual(data.Id, result.Id, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "Backend_AvatarItemBackend_Create_Valid_Data_Should_Pass", "passed");
         }
         #endregion create
 
@@ -469,6 +500,7 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.IsNull(result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "Backend_AvatarItemBackend_GetAvatarItemShopViewModel_ItemId_Null_Should_Fail", "passed");
         }
 
         [TestMethod]
@@ -486,6 +518,7 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.IsNull(result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "missing test title", "passed");
         }
         #endregion GetAvatarItemShopViewModel
 
@@ -503,6 +536,7 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.IsNotNull(result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "missing test title", "passed");
         }
 
         [TestMethod]
@@ -518,6 +552,8 @@ namespace _5051.UnitTests.Backend
 
             //assert
             Assert.IsNotNull(result, TestContext.TestName);
+            listOfRows = listOfRows + string.Format(greenRow, "missing test title", "passed");
+
         }
 
         [TestMethod]
