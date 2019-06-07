@@ -3,6 +3,13 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using _5051;
+using _5051.Controllers;
+using _5051.Models;
+using _5051.Backend;
+using _5051.Tests.MailService;
+using System.Net.Mail;
+using System.Net;
 
 namespace _5051.Tests.AdditionalTest
 {
@@ -60,12 +67,45 @@ namespace _5051.Tests.AdditionalTest
         #endregion
 
         [TestMethod]
-        public void MockControllerTest()
+        public void MockControllerTestAvartaController()
         {
-            
-            //
-            // TODO: Add test logic here
-            //
+            Mock<AvatarSelectController> mockObject = new Mock<AvatarSelectController>();
+            Assert.AreEqual(mockObject, null);
+        }
+
+        [TestMethod]
+        public void MockControllerTestBaseController()
+        {
+            Mock<BaseController> mockObject = new Mock<BaseController>();
+            Assert.AreEqual(mockObject, null);
+        }
+
+        [TestMethod]
+        public void MockControllerTestHomeController()
+        {
+            Mock<HomeController> mockObject = new Mock<HomeController>();
+            Assert.AreEqual(mockObject, null);
+        }
+
+        [TestMethod]
+        public void MockControllerTestKioskController()
+        {
+            Mock<KioskController> mockObject = new Mock<KioskController>();
+            Assert.AreEqual(mockObject, null);
+        }
+
+        [TestMethod]
+        public void MockControllerTestKioskSettingsController()
+        {
+            Mock<KioskSettingsController> mockObject = new Mock<KioskSettingsController>();
+            Assert.AreEqual(mockObject, null);
+        }
+
+        [TestMethod]
+        public void MockControllerTestPortalController()
+        {
+            Mock<PortalController> mockObject = new Mock<PortalController>();
+            Assert.AreEqual(mockObject, null);
         }
     }
 }
