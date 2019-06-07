@@ -131,11 +131,6 @@ namespace _5051.Tests.MailService
             throw new NotImplementedException();
         }
 
-        //public string SendEmailService(string title, string testResult, string emailAddress)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public string BuildHTMLBodyV2(string testTitle, string testResult, int count, string sheetUrl)
         {
             throw new NotImplementedException();
