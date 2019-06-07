@@ -14,7 +14,7 @@ using System.Net;
 namespace _5051.Tests.AdditionalTest
 {
     /// <summary>
-    /// Summary description for AdditionalTests
+    /// David 's mock test list
     /// </summary>
     [TestClass]
     public class AdditionalTests
@@ -29,7 +29,7 @@ namespace _5051.Tests.AdditionalTest
         private TestContext testContextInstance;
 
         /// <summary>
-        ///Gets or sets the test context which provides
+        /// David 's mock test list
         ///information about and functionality for the current test run.
         ///</summary>
         public TestContext TestContext
@@ -66,6 +66,9 @@ namespace _5051.Tests.AdditionalTest
         //
         #endregion
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestAvartaController()
         {
@@ -73,6 +76,9 @@ namespace _5051.Tests.AdditionalTest
             Assert.AreEqual(mockObject, null);
         }
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestBaseController()
         {
@@ -80,6 +86,9 @@ namespace _5051.Tests.AdditionalTest
             Assert.AreEqual(mockObject, null);
         }
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestHomeController()
         {
@@ -87,6 +96,9 @@ namespace _5051.Tests.AdditionalTest
             Assert.AreEqual(mockObject, null);
         }
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestKioskController()
         {
@@ -94,6 +106,9 @@ namespace _5051.Tests.AdditionalTest
             Assert.AreEqual(mockObject, null);
         }
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestKioskSettingsController()
         {
@@ -101,6 +116,9 @@ namespace _5051.Tests.AdditionalTest
             Assert.AreEqual(mockObject, null);
         }
 
+        /// <summary>
+        /// David 's mock test list
+        /// </summary>
         [TestMethod]
         public void MockControllerTestPortalController()
         {
