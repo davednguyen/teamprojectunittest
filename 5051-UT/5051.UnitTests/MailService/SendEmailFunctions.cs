@@ -6,8 +6,8 @@ namespace _5051.UnitTests.MailService
 {
     public class SendEmailFunctions : iSendEmailFunctions
     {
-        private static string senderEmail = "attendancestarwebtest@outlook.com";
-        private static string senderEmailPassword = "Password123456";
+        private static string senderEmail = "<enter email address here>";
+        private static string senderEmailPassword = "<enter email passord here>";
 
         #region
         public string BuildHTMLBody(string testTitle, string testResult,int count)

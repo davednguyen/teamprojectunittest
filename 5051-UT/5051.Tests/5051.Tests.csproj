@@ -113,6 +113,7 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalTest\AdditionalTests.cs" />
     <Compile Include="Controllers\KioskSettingsControllerTest.cs" />
     <Compile Include="Controllers\AvatarSelectControllerTest.cs" />
     <Compile Include="Controllers\PortalControllerTest.cs" />

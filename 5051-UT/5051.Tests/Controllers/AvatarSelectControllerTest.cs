@@ -20,8 +20,8 @@ namespace _5051.Tests.Controllers
     {
         public TestContext TestContext { get; set; }
         SendEmailFunctions mailService = new SendEmailFunctions();
-        private static string senderEmail = "attendancestarwebtest@outlook.com";
-        private static string senderEmailPassword = "Password123456";
+        private static string senderEmail = "<enter email address here>";
+        private static string senderEmailPassword = "<enter email passord here>";
         static string greenRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:green;\">{1}</td></tr>";
         static string redRow = "<tr style=\"border:1px solid #dddddd\"><td style=\"border:1px solid #dddddd\">{0}</td><td style=\"color:red;\">{1}</td></tr>";
         static string fullTable = " <table style=\"width:20%\"> <tr style=\"border:1px solid #dddddd\"><th style=\"border:1px solid #dddddd\"> Test Name </th><th style=\"border:1px solid #dddddd\">Test Result</th></tr>{0}</table>";
@@ -1158,7 +1158,7 @@ namespace _5051.Tests.Controllers
         private void SendEmail(string title, string result)
         {
             var emailBody = mailService.BuildHTMLBody(title, result.ToString(), 0);
-            mailService.SendEmailService(title, emailBody, "attendancestarwebtest@outlook.com");
+            mailService.SendEmailService(title, emailBody, "<enter email address here>");
         }
     }
 }

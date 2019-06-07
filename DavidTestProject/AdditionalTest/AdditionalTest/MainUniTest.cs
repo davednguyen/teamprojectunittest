@@ -16,7 +16,7 @@ namespace AdditionalTest
         [TestInitialize]
         public void SetupTest()
         {
-            driver = new ChromeDriver((@"C:\Users\dzzn\Desktop\truonghoc\teamprojectunittest\DavidTestProject\AdditionalTest\AdditionalTest\bin\Debug\"), new ChromeOptions());
+            driver = new ChromeDriver((@"C:\Users\dnguyen\Desktop\truonghoc\teamprojectdemo\teamprojectunittest\DavidTestProject\AdditionalTest\AdditionalTest\bin\Debug\"), new ChromeOptions());
         }
 
         [TestMethod]
